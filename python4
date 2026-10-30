@@ -1,0 +1,33 @@
+
+n = int(input("Enter number of teams: "))
+teams = []
+
+for i in range(n):
+    print("\nTeam", i + 1)
+    name = input("Enter team name: ")
+    size = int(input("Enter team size: "))
+
+    if size < 2 or size > 4:
+        print("Invalid team size")
+        continue
+
+    r1 = int(input("Enter Round 1 score: "))
+    r2 = int(input("Enter Round 2 score: "))
+    r3 = int(input("Enter Round 3 score: "))
+
+    total = r1 + r2 + r3
+    teams.append([name, size, r1, r2, r3, total])
+
+teams.sort(key=lambda x: (x[5], x[4]), reverse=True)
+
+print("\n--- Hackathon Team Ranking ---")
+
+rank = 1
+for team in teams:
+    print("Rank:", rank)
+    print("Team Name:", team[0])
+    print("Team Size:", team[1])
+    print("Total Score:", team[5])
+    print("Final Round Score:", team[4])
+    print()
+    rank += 1
